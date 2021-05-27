@@ -6,7 +6,6 @@ Team Profile Generator is a HTML generator which helps team managers to create a
 - [Installation](#installation)
 - [Tests](#tests)
 - [Usage](#usage)
-- [Credits](#credits)
 - [License](#license)
 ## Installation
 Operation system needs to have node js and npm installed. In addtion, after git clone, enter 'npm i' on the terminal prior to the first use
@@ -16,8 +15,9 @@ use 'npm run test' to perfrom test on this app
 
 ## Usage
 Simply initiate this app by entering 'node.js' and follow the questionaires
-![alt text](img and demo/ezgif.com-video-to-gif.gif)
-walkthrough videos: https://www.youtube.com/watch?v=pO5iIGt3myk
+![img](img and demo/ezgif.com-video-to-gif.gif)
+
+# DEMO: https://www.youtube.com/watch?v=pO5iIGt3myk
 
 ## Contributing
 
@@ -28,9 +28,6 @@ you may fork this application by the following steps
  3. **Commit** changes to your own branch
  4. **Push** your work back up to your fork
  5. **Other Notes** 1. Rex: the main developer and tester
-
-## Credits
-n/a
 
 ## License
 * Licensed under the MIT license (MIT) License. Copyright © 2021
