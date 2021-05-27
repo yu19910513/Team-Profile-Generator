@@ -4,8 +4,8 @@ const Employee = require('./lib/Employee.js');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const memberArray = [];
 
+//head of html
 const generateRoot = (ans) =>
 `<!DOCTYPE html>
 <html lang="en">
@@ -30,12 +30,15 @@ const generateRoot = (ans) =>
           `
 
 
-const endpoint =
-`</div>
+//end of html
+const endpoint = () =>
+    `</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-</body>
-</html>`
+    </body>
+    </html>`
 
+
+//for each added member
 const cardQuestions =[
     {
         type: 'rawlist',
@@ -75,6 +78,8 @@ const cardQuestions =[
       },
 ];
 
+
+// general questions
 const questions = [
     {
         type: 'confirm',
@@ -104,18 +109,24 @@ const questions = [
       },
 ]
 
+//first flow of general question
 inquirer.prompt(questions).then((ans) => {
     const firstContent = generateRoot(ans);
-    memberArray.push(JSON.stringify(firstContent))
+    fs.writeFile('dist/team.html', firstContent, (err) =>
+    err ? console.log(err) : console.log('Dude, you have no member in your team')
+    )
     if (ans.addPeople) {
         inquirer.prompt(cardQuestions).then((ans) => {
             addMember(ans);
             addPeople(ans)
         })
     }
-    else {console.log('the end');}
+    else {
+        wrapup()
+    }
 })
 
+//add member loop until client chooses NO
 function addPeople(ans) {
     if (ans.addPeople) {
         inquirer.prompt(cardQuestions).then((ans) => {
@@ -123,81 +134,54 @@ function addPeople(ans) {
             addPeople(ans);
         })
     }
-    else {console.log('the end');}
+    else {
+        wrapup()
+    }
 }
+
+// detail of each registered member (body of html)
 function addMember(ans) {
     if (ans.role == 'intern'){
         const member = new Intern(ans.name, ans.description, ans.email, ans.github);
-        memberArray.push(JSON.stringify(member.getHTML()))
+        fs.appendFile("dist/team.html", member.getHTML(), function (err) {
+            if (err) {
+                console.log(err);
+            };
+        });
     } else if (ans.role == 'manager') {
         const member = new Manager(ans.name, ans.description, ans.email, ans.github);
-        memberArray.push(JSON.stringify(member.getHTML()))
+        fs.appendFile("dist/team.html", member.getHTML(), function (err) {
+            if (err) {
+                console.log(err);
+            };
+        });
     } else if (ans.role == 'engineer') {
         const member = new Engineer(ans.name, ans.description, ans.email, ans.github);
-        memberArray.push(JSON.stringify(member.getHTML()))
+        fs.appendFile("dist/team.html", member.getHTML(), function (err) {
+            if (err) {
+                console.log(err);
+            };
+        });
+
     } else {
         const member = new Employee(ans.name, ans.description, ans.email, ans.github);
-        memberArray.push(JSON.stringify(member.getHTML()))
+        fs.appendFile("dist/team.html", member.getHTML(), function (err) {
+            if (err) {
+                console.log(err);
+            };
+        });
     }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // fs.writeFile('index.html', htmlPageContent, (err) =>
-    //   err ? console.log(err) : console.log('Successfully created index.html!')
-    // );
-
-
-//   function writeToFile(fileName, data) {
-//     fs.writeFile(fileName, data, err => {
-//         if (err) {
-//           return console.log(err);
-//         }
-
-//         console.log("Success! Your README.md file has been generated")
-//     });
-// }
-// const writeFileAsync = util.promisify(writeToFile);
-
-// async function init() {
-//     try {
-
-//         // Prompt Inquirer questions
-//         const userResponses = await inquirer.prompt(questions);
-//         console.log("Your responses: ", userResponses);
-//         console.log("Thank you for your responses! Fetching your GitHub data next...");
-
-//         // Call GitHub api for user info
-//         const userInfo = await api.getUser(userResponses);
-//         console.log("Your GitHub user info: ", userInfo);
-
-//         // Pass Inquirer userResponses and GitHub userInfo to generateMarkdown
-//         console.log("Generating your README next...")
-//         const markdown = generateMarkdown(userResponses, userInfo);
-//         console.log(markdown);
-
-//         // Write markdown to file
-//         await writeFileAsync('ExampleREADME.md', markdown);
-
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-// init()
+//final polish of html
+function wrapup() {
+    const endContent = endpoint();
+    fs.appendFile("dist/team.html", endContent, function (err) {
+        if (err) {
+            console.log(err);
+        };
+    });
+    console.log("YOU HAVE COMPELTED THE TEAM PROFILE! Please check the dist fold for your html file");
+}
