@@ -54,12 +54,17 @@ const cardQuestions =[
     {
         type: 'input',
         name: 'name',
-        message: 'Please enter the name',
+        message: 'Please enter full name (ex. John Smith)',
       },
       {
         type: 'input',
-        name: 'description',
-        message: 'Please enter the job description assoicated with this role',
+        name: 'id',
+        message: 'Please enter ID number assoicated with this role',
+      },
+      {
+        type: 'input',
+        name: 'school',
+        message: 'Please enter the school associated with this person if applicable',
       },
       {
         type: 'input',
@@ -142,21 +147,21 @@ function addPeople(ans) {
 // detail of each registered member (body of html)
 function addMember(ans) {
     if (ans.role == 'intern'){
-        const member = new Intern(ans.name, ans.description, ans.email, ans.github);
+        const member = new Intern(ans.name, ans.id, ans.email, ans.github, ans.school);
         fs.appendFile("dist/team.html", member.getHTML(), function (err) {
             if (err) {
                 console.log(err);
             };
         });
     } else if (ans.role == 'manager') {
-        const member = new Manager(ans.name, ans.description, ans.email, ans.github);
+        const member = new Manager(ans.name, ans.id, ans.email, ans.github);
         fs.appendFile("dist/team.html", member.getHTML(), function (err) {
             if (err) {
                 console.log(err);
             };
         });
     } else if (ans.role == 'engineer') {
-        const member = new Engineer(ans.name, ans.description, ans.email, ans.github);
+        const member = new Engineer(ans.name, ans.id, ans.email, ans.github);
         fs.appendFile("dist/team.html", member.getHTML(), function (err) {
             if (err) {
                 console.log(err);
@@ -164,7 +169,7 @@ function addMember(ans) {
         });
 
     } else {
-        const member = new Employee(ans.name, ans.description, ans.email, ans.github);
+        const member = new Employee(ans.name, ans.id, ans.email, ans.github);
         fs.appendFile("dist/team.html", member.getHTML(), function (err) {
             if (err) {
                 console.log(err);

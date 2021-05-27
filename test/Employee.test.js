@@ -16,18 +16,18 @@ describe("Employee", () => {
         })
     })
 
-    describe("getDesc", () => {
-        it("should return desc via contructor", () => {
-            const samplevalue= 'is hungry';
+    describe("getId", () => {
+        it("should return id via contructor", () => {
+            const samplevalue= 10;
             const sample = new Employee('rex', samplevalue)
-            expect(sample.desc).toEqual(samplevalue);
+            expect(sample.id).toEqual(samplevalue);
         })
     })
 
     describe("getEmail", () => {
         it("should return email via contructor", () => {
             const samplevalue = 'Sample@me.com';
-            const sample = new Employee('rex', 'boring', samplevalue, 'yu19910513')
+            const sample = new Employee('rex', 10, samplevalue, 'yu19910513')
             expect(sample.email).toEqual(samplevalue);
         })
     })
@@ -35,8 +35,16 @@ describe("Employee", () => {
     describe("getGithub", () => {
         it("should return github value via contructor", () => {
             const samplevalue = 'rexyu';
-            const sample = new Employee('rex', 'boring', 'me@me.com', samplevalue)
+            const sample = new Employee('rex', 10, 'me@me.com', samplevalue)
             expect(sample.github).toEqual(samplevalue);
+        })
+    })
+
+    describe("getRole", () => {
+        it("should return role value via contructor", () => {
+            const samplevalue = 'employee';
+            const sample = new Employee('rex', 10, 'me@me.com', 'rexyu', samplevalue)
+            expect(sample.role).toEqual(samplevalue);
         })
     })
 
@@ -47,13 +55,13 @@ describe("Employee", () => {
                 <div class="card-body">
                   <h5 class="card-title">rex</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Employee</h6>
-                  <p class="card-text">boring</p>
+                  <p class="card-text">10</p>
                   <a href="me@me.com" class="card-link">me@me.com</a>
                   <a href="https://github.com/rexyu" class="card-link">GitHub: rexyu</a>
                 </div>
               </div>
         </div>`
-            const sample = new Employee('rex', 'boring', 'me@me.com', 'rexyu')
+            const sample = new Employee('rex', 10, 'me@me.com', 'rexyu')
             expect(sample.employee()).toEqual(samplevalue());
         })
     })
