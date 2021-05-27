@@ -17,9 +17,7 @@ use 'npm run test' to perfrom test on this app
 Simply initiate this app by entering 'node.js' and follow the questionaires
 ![img](img and demo/ezgif.com-video-to-gif.gif)
 
-# DEMO: https://www.youtube.com/watch?v=pO5iIGt3myk
-
-## Contributing
+### DEMO: https://www.youtube.com/watch?v=pO5iIGt3myk
 
 ## Contributing
 you may fork this application by the following steps
