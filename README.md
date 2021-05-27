@@ -15,9 +15,10 @@ use 'npm run test' to perfrom test on this app
 
 ## Usage
 Simply initiate this app by entering 'node.js' and follow the questionaires
-![img](img and demo/ezgif.com-video-to-gif.gif)
+![demo](./img and demo/ezgif.com-video-to-gif.gif)
+walkthrough videos: https://www.youtube.com/watch?v=pO5iIGt3myk
 
-### DEMO: https://www.youtube.com/watch?v=pO5iIGt3myk
+## Contributing
 
 ## Contributing
 you may fork this application by the following steps
