@@ -28,7 +28,6 @@ you may fork this application by the following steps
  4. **Push** your work back up to your fork
  5. **Other Notes** 1. Rex: the main developer and tester
 
-
 ## License
 * Licensed under the MIT license (MIT) License. Copyright © 2021
 ---
